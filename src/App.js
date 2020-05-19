@@ -7,7 +7,14 @@ function App() {
   const [message,setMessage] = useState('');
   const {error,loading,messages} = useChat();
 
-  
+  const setMessage = e => {
+    e.preventDefault();
+
+    db.collection('messages').add ({
+      timestamp: Date.now(),
+      message
+    });
+  }
 
   return (
     <div className="App">
